@@ -33,12 +33,12 @@ III.A Properies file example
     cell_x_loc = Nuclei_Location_CenterX
     cell_y_loc = Nuclei_Location_CenterY
     # ==== Image access info ====
-    image_url_prepend = 
+    image_url_prepend =
     # ==== Image Path and Filename Columns ====
-    image_path_cols = Image_Pathnames_Path_Origdna, 
+    image_path_cols = Image_Pathnames_Path_Origdna,
       Image_Pathnames_Path_Origdna, Image_Pathnames_Path_Origdna
     image_file_cols = Image_Filenames_Filename_origActin,
-      Image_Filenames_Filename_origpH3, Image_Filenames_Filename_origdna 
+      Image_Filenames_Filename_origpH3, Image_Filenames_Filename_origdna
     image_names = Actin, pH3, DNA
     image_channel_colors = red, green, blue
     # ==== Global Meta data ====
@@ -65,13 +65,13 @@ A MySQL database is recommended for storing extremely large data that may need t
     db_name    =  your database name
     db_user    =  your user name
     db_passwd  =  your password
-    
+
 To connect to an SQLite database
 --------------------------------
 SQLite is another mode of data storage, in which tables are stored in a large, database-like file on your local computer rather than a database server. This is easier to set up than a full- featured MySQL database and is at least as fast, but it is not a good choice of storage if the data is to be accessed by multiple concurrent connections. This mode of storage also puts a limitation on the number of rules used in the FastGentleBoosting Algorithm in Classifier (see section III.B.5). CellProfiler is able to export data in this format using the ExportToDatabase module.
 
 .. code-block:: text
-    
+
     db_type         =  sqlite
     db_sqlite_file  =  path and filename of SQLite db file
 
@@ -110,14 +110,14 @@ Database column names
 The following fields identify the columns that specify unique image and object numbers:
 
 .. code-block:: text
-    
+
     image_id   =  image_number key column from the image & object table
     object_id  =  object_number key column from the object table
-    
+
 The following field (optional) identifies the columns that specify a table number, which is useful in cases where multiple image tables have been manually merged and the image number column is no longer unique:
 
 .. code-block:: text
-    
+
     table_id  =  table_number key column from the image & object tables
 
 The following fields identify the columns in the object table that specify the x and y location of each object within the original image:
@@ -130,7 +130,7 @@ The following fields identify the columns in the object table that specify the x
 The following fields (optional) identify plate and well columns in your image table and are only required by the PlateMapBrowser tool:
 
 .. code-block:: text
-    
+
     plate_id  =  plate_id column from the image table
     well_id   =  well_id column from the image table
 
@@ -139,7 +139,7 @@ III.D Image access values
 The following fields specify the columns in the image table that contain the image paths and file names. CPA can access images stored locally or via HTTP. In either case, the URLs (locations) of images must be specified in the image table. You can specify any number of image channels, separated by commas:
 
 .. code-block:: text
-    
+
     image_path_cols = 1st channel image path column, 2nd channel image path column,...
     image_file_cols = 1st channel image file column, 2nd channel image file column,...
 
@@ -153,15 +153,15 @@ The following fields (optional) allow you to provide a common name for each of t
 The following field (optional) specifies how to combine each channel when displaying an image. Valid blend mode values are add and subtract. By default, additive blending is used, which is best for combining channels from fluorescent images. However, subtractive blending may be desirable when you wish to display outlines over a brightfield image. In this case, the brightfield channel is added while the outline channel is subtracted. The result would be the normal brightfield image with black outlines created from subtracting the white outline values from the white background of the brightfield image.
 
 .. code-block:: text
-    
+
     image_channel_blend_modes = add, add, add, ...
-    
+
 The following field allows you to specify how many channels should be read from each image file specified by image_path_cols and image_file_cols. By default, CPA will expect to find 1 channel per image. If you wish to read 3 channels from a single RGB image, you would set: channels_per_image = 3. Remember that image_names, image_channel_colors, and image_channel_blend_modes will then each need 3 values specified instead of just 1.
 
 .. code-block:: text
-    
+
     channels_per_image  = 1, 1, 1, ...
-    
+
 The following field allows you to specify a URL prefix to add to all image paths. That is, CPA will place the contents of this field in front of the path and filename values extracted from image_path_cols and image_file_cols. This is especially useful if you wish to move your images to another location without having to change the image_path_cols column in the database, or when the images are stored remotely and need to be accessed through HTTP. For example, if you set image_url_prepend = http://yourserver.com/images and the path and file name in the database for a given image are yourpath and file.png, then CPA will open http://yourserver.com/images/yourpath/file.png.
 
 .. code-block:: text
@@ -171,7 +171,7 @@ The following field allows you to specify a URL prefix to add to all image paths
 The following field specifies the crop size of the object tiles, that is, the pixel size of the square “window” that shows an individual object in certain tools within CPA. A good rule of thumb is to set this value to be slightly larger than the approximate diameter of the objects:
 
 .. code-block:: text
-    
+
     image_tile_size  =  tile size in pixels
 
 III.F Other optional settings
@@ -182,20 +182,20 @@ Metadata
 .. code-block:: text
 
     object_name = singular name, plural name
-    
+
 The following field tells PlateMapBrowser what size plates were used. Supported types are 96, 384, 1536, or 5600 (for cell microarrays)
 
 .. code-block:: text
 
     plate_type  =  number of wells
-    
+
 Columns ignored by Classifier
 -----------------------------
 The following field (optional) specifies columns in the per-object table that you want Classifier to ignore when finding rules for classifying objects. Classifier automatically ignores columns defined by the table_id, image_id, and object_id fields, as well as any columns that contain non-numeric data. When using this field to specify additional columns to ignore, note that your column names cannot contain commas because commas are used to separate each column name. You can also use regular expressions to refer to a set of column names for Classifier to ignore:
 
 .. code-block:: text
 
-    classifier_ignore_columns = column name or regular expression A, 
+    classifier_ignore_columns = column name or regular expression A,
       column name or regular expression B
 
 For example, the following statement will ignore the column named WellID, any columns whose name contains the text Red (case-sensitive), and any columns that end in _Position.
@@ -253,7 +253,7 @@ ImageFilter
 The following fields (optional) specify a subset of the images in your experiment from which to fetch and score objects in Classifier. Multiple filters can be created by using the format below and replacing 'XXX' with a name for the filter. Names can include alphanumeric characters and underscores.
 
 .. code-block:: text
-    
+
     filter_SQL_XXX = SQL select statement that returns image-keys for image you want to include
 
 For example, here is a filter that returns only images from plate 1:
@@ -271,16 +271,16 @@ This example returns only images from with a gene column that starts with CDK:
 This example does the same for a database that includes a table_id column TableNumber:
 
 .. code-block:: text
-    
+
     filter_SQL_CDKs = SELECT ImageNumber, TableNumber FROM per_image WHERE gene REGEXP 'CDK.*'
 
 Filters may be created from within CPA by choosing the option “*create new filter*”. A dialog box will appear that allows you to define filters on the fly. First choose a name for your filter, then choose the column you would like to filter and specify the constraints. For example, below we select lonely those images from well A07:
 
-TODO IMAGE
+.. figure:: static/03_01.jpg
 
 You may select more than one column for your filter. For example if you would like only those images from well A07 which have more than 10 cells, you would click ‘Add Column’ and specify the filter as such:
 
-TODO IMAGE
+.. figure:: static/03_02.jpg
 
 When you have completed your filter, click OK. The filter will now be available to you to use in the CPA tools for the remainder of your session.
 

@@ -3,7 +3,12 @@ IV. The CellProfiler Analyst Interface
 ======================================
 To run CPA, double-click the CPAnalyst.exe file on Windows or CPAnalyst.app on Mac OS. Once you have selected a properties file to load, the following small window will appear.
 
-TODO IMAGE
+.. figure:: static/04_01.jpg
+	:align: center
+.. figure:: static/04_02.jpg
+	:align: center
+
+	CellProfiler Analyst main window.
 
 This window provides a toolbar at the top with icons to launch each of CPA’s tools. The currently available tools are Image Gallery, Classifier, Plate Viewer, Scatter Plot, Histogram, Density Plot and Table Viewer. These tools can also be launched from the Tools menu. More tools will be added to this suite in the future.
 

@@ -28,7 +28,8 @@ The image table requires one column for a unique image ID and a pair of columns 
 
 An image table for an experiment involving cells imaged for GFP and Hoechst would have two channels and would look something like this:
 
-TODO IMAGE
+.. figure:: static/01_01.jpg
+  :align: center
 
 I.B Example  object table
 =========================
@@ -40,6 +41,5 @@ The object table requires four columns: a foreign key image ID column that corre
 
 An object table for an experiment involving cells imaged for GFP and Hoechst would have two channels and would look something like this:
 
-TODO IMAGE
-
-
+.. figure:: static/01_02.jpg
+  :align: center

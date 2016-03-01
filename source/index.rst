@@ -15,12 +15,22 @@ Contents:
     :maxdepth: 2
     :caption: Sweet Docs
 
+    0_introduction
     1_preliminary_requirements
     2_installation
     3_properties_file
     4_cpa_interface
-    12_table_viewer
-    
+    5_classifier
+    6_table_viewer
+    7_image_viewer
+    8_plate_viewer
+    9_scatter_plot
+    10_histogram_plot
+    11_density_plot
+    12_boxplot
+    13_workspaces
+
+
 
 .. toctree::
     :titlesonly:
